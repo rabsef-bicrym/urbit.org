@@ -10,7 +10,7 @@ Here are a couple of practical examples of using Behn's `%wait` and `%rest` `tas
 
 Here we'll look at setting a timer by passing Behn a `%wait` `task` and taking the `%wake` `gift` it returns when the timer fires.
 
-Below is a thread which will take a `@dr` as its argument and `%pass`es Behn a `%wait` `task` to fire `@dr` in the future. When the timer fires, it'll then take the `%wake` `gift` and print it to the terminal along with the time that has elapsed.
+Below is a thread which will take a `@dr` as its argument and `%pass`es Behn a `%wait` `task` to fire `@dr` in the future (by calculating a `[%wait @da]` (adding `now` (as `t1`) to the `@dr` sample) when Behn will send a `[%wake <gift>]`). When the timer fires, it'll then take the `%wake` `gift` and print it to the terminal along with the time that has elapsed.
 
 `wait.hoon`
 
