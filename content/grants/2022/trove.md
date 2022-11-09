@@ -43,6 +43,12 @@ The backend agent should work alongside a client library to store metadata assoc
 
 The client library will do the uploading to S3 or IPFS and forward the metadata to the backend agent upon success.
 
+> Note: To avoid sharing access credentials to S3 Buckets or IPFS nodes, users will upload to their own store when adding files to any Trove. Administrators and Moderators will have the ability to `rehome` a file from some contributor's S3 Bucket/IPFS node to the Trove's host's S3 Bucket/IPFS node.
+
+Trove will use an `(axal [permissions (map id file)])` to generate traversable namespaces per Trove. These should allow for URL legibility in future iterations, as well, should this be required for frontend support.
+
+Trove will be capable of integrating with Holium's Spaces as well as Tlon's Groups application, while avoiding namespace overlap between the two.
+
 ## Permissions
 
 Roles are as follows:
@@ -53,14 +59,17 @@ Roles are as follows:
 
 A group admin should be able to set roles for the following **actions**:
 
-- add-file
-- edit-file-metadata
-- move-file
-- delete-file
-- add-folder
-- edit-folder-metadata
-- move-folder
-- delete-folder
+- files
+  + add-file
+  + edit-metadata
+  + move-file
+  + delete-file
+- folders
+  + add-folder
+  + edit-folder-name-or-permissions
+  + move-folder-and-contents
+  + delete-folder-and-contents
+
 
 A set of roles will be mapped to each action as below:
 
@@ -69,9 +78,11 @@ A set of roles will be mapped to each action as below:
 
 Holium will work with the developer(s) to provide frontend support, but the team working on this bounty will be responsible for frontend implementation.
 
-## Milestone 1: 3 stars ($4k bonus if done by December 12, 2022)
+## Milestone 1: 4 stars ($8k bonus if done by December 12, 2022)
 
-Have a working file eHave a working file explorer app that can find files, transfer files, and drag and drop.
+- Have a working file explorer app that can find files, transfer files, and drag and drop.
+
+- Have recursive, per-folder, forced-nesting, permission sets for the operations described in **Permissions** above.
 
 For the milestone to be completed, the app must be approved by Holium and it must be hosted for distribution on Holium's app star (as well as your own if desired).
 
